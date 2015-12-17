@@ -1,0 +1,44 @@
+#!/bin/bash
+
+PREREQS=( "curl" "fpm" )
+VERSION="3.0"
+
+error() {
+echo $1
+exit 1
+}
+
+check_prereq() {
+local PACKAGE=$1
+which $PACKAGE >/dev/null || error "$PACKAGE is missing"
+}
+
+download() {
+local URL="http://download2.mikrotik.com/routeros/winbox/$VERSION/winbox.exe"
+if [ ! -f package_root/opt/winbox/bin/winbox.exe ]; then
+  curl -s --head --fail --connect-timeout 2 "$URL" -o /dev/null || error "${URL} does not exist"
+  curl -sLo package_root/opt/winbox/bin/winbox.exe ${URL}
+fi
+}
+
+create_package() {
+fpm -s dir -t deb -n yed \
+--version "$VERSION" \
+--after-install scripts/after-install \
+--depends "wine" \
+-C package_root \
+opt tmp
+}
+
+cleanup() {
+rm -rf package_root/opt/winbox/bin/*
+}
+
+for PREREQ in ${PREREQS[@]}
+do
+  check_prereq $PREREQ
+done
+
+download
+create_package
+cleanup

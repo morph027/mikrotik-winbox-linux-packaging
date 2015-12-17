@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Winbox
+Exec=sh -c "wine /opt/winbox.exe"
+Icon=wine
+Terminal=false
+Type=Application
+StartupNotify=true
