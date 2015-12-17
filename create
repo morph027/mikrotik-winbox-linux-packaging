@@ -22,7 +22,7 @@ fi
 }
 
 create_package() {
-fpm -s dir -t deb -n yed \
+fpm -s dir -t deb -n winbox \
 --version "$VERSION" \
 --after-install scripts/after-install \
 --depends "wine" \

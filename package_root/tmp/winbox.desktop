@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Winbox
-Exec=sh -c "wine /opt/winbox.exe"
+Exec=sh -c "wine /opt/winbox/bin/winbox.exe"
 Icon=wine
 Terminal=false
 Type=Application
