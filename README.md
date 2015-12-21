@@ -5,7 +5,7 @@ Create MikroTik Winbox packages.
 ## Requirements
 
 * curl
-* ruby + gem + fpm (```gem install fpm```)
+* ruby + gem + fpm (```gem install fpm```, this needs package ```ruby-dev```)
 
 ## Usage
 
