@@ -26,6 +26,7 @@ fpm -s dir -t deb -n winbox \
 --version "$VERSION" \
 --after-install scripts/after-install \
 --depends "wine" \
+--exclude *.gitignore \
 -C package_root \
 opt tmp
 }
